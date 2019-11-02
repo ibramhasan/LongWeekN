@@ -37,7 +37,49 @@ head{
 main{
 
 }
+* {box-sizing: border-box;}
+body{margin: 0;}
+form {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+}
 
+main .d7 {background: #7BA7AB;}
+main .d7:after {content:""; clear:both; display:table}
+main .d7 form {
+  width: auto;
+  float: right;
+  margin-right: 30px;
+}
+main .d7 input {
+  width: 250px;
+  height: 42px;
+  padding-left: 15px;
+  border-radius: 42px;
+  border: 2px solid #324b4e;
+  background: #F9F0DA;
+  outline: none;
+  position: relative;
+  transition: .3s linear;
+}
+main .d7 input:focus {
+  width: 300px;
+}
+main .d7 button {
+  width: 42px;
+  height: 42px;
+  background: none;
+  border: none;
+  position: absolute;
+  top: -2px;
+  right: 0;
+}
+main .d7 button:before{
+  content: "\f002";
+  font-family: FontAwesome;
+  color: #324b4e;
+}
 
 
 
