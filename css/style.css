@@ -7,7 +7,49 @@ body{
 head{
 
 }
+.content{
+	background-color: white;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	position: relative;
+	padding-left: 40px;
+	padding-top: 50px
+}
+.card{
+	background-color: white;
+	background-color font: white;
+}
+.row{
+	text-align: center;
+	margin-top::  80px;
+	padding-left: auto;
+	text-overflow: inherit;
+	background-color: blue;
+	margin-bottom color: 60px;
+	background-size: 80px;
+	background-color font-size: white;
+	background-color font: white;
+}
+#p1{
+	margin-left: 70px;
+	position font-size: 70px;
+}
+#tes{
+	margin-top: 100px;
+	margin-bottom: 80px;
+}
+p{
+	position: top;
+			top: 100px;
+			width: 200px;
 
+			margin-bottom top:  80px;
+			padding-top: 90px;
+
+}
+.cuy{
+	background-color: white;
+}
 
 
 
@@ -62,5 +104,5 @@ main{
 
 /*css taupik*/
 footer{
-	
+
 }
