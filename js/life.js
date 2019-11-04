@@ -87,6 +87,15 @@ $(document).ready(function(){
 		$(".img-fluid-6").animate({height:"200px",width:"200px"},"slow");
 	});
 });
+// case studies
+$(document).ready(function(){
+	$("#gam1").click(function(){
+		$("#gam1").animate({width:"toggle"},"slow")(function(){
+			$("#gam1").slideDown("slow");
+		});
+	});
+});
+
 
 
 
