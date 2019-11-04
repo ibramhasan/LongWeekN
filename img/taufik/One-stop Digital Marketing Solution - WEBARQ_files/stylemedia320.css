@@ -1,0 +1,243 @@
+/*=============================================================================================	
+    Company    : PT Web Architect Technology - webarq.com
+    Document   : MediaQuery 1366
+    Author     : Rizki Nida Chaerulsyah - akuiki.net
+==============================================================================================*/
+
+
+
+/* structure
+----------------------------------------------------------------------------------------------*/
+
+.content{width: 300px}
+
+/* header
+----------------------------------------------------------------------------------------------*/
+#middle .wrap_banner.home .caption h1 {font-size: 30px;}
+header .menu {width: 250px;}
+header .btn_header.m480 {width: 190px}
+header .btn_header.m480 a {margin-bottom: 10px}
+header.active .btn_header a.get_info {
+    width: 70px;
+    padding-left: 35px;
+}
+header .tel480{
+    display: block;
+    width: 0;
+    overflow: hidden;
+    position: relative;
+    right: -40px;
+    top: 20px;
+}
+
+/* middle
+----------------------------------------------------------------------------------------------*/
+#middle section {padding:35px 0 0 0}
+#middle section h2 {font-size: 21px;margin: 0px 0 20px 0}
+#middle section h6 {margin-bottom: 35px}
+
+#middle .wrap_banner.home .caption {width: 300px}
+#middle .wrap_banner.home .banner_home .pattern img, 
+#middle .wrap_banner.home .banner_home .box img {width: 645px;height: auto;}
+
+#middle section.services .content {width: 300px;}
+#middle section.services .google_partner{margin-bottom: 45px}
+#middle section.services .google_partner img{width: 130px}
+#middle section.services .box_services {height: 200px;}
+#middle section.services .box_services img {width: 170px}
+#middle section.services .box_services h1{margin: -10px auto 0 auto; font-size: 11px}
+
+#middle section .wrap_slide_clients .btn_learn a {
+    width: 286px;
+    font-size: 9.5px;
+    height: 38px;
+    line-height: 41px;
+}
+#middle section .nav_slide{height: 60px}
+#middle section .nav_slide .direction.next a{padding: 26px 0 26px 85px}
+#middle section .nav_slide .direction.next a span {left: 35px;}
+
+#middle section .nav_slide .direction.prev a{padding: 26px 85px 26px 0}
+#middle section .nav_slide .direction.prev a span {right: 35px;}
+
+#middle section.connect .box_connect {width: 300px;text-align: center;}
+#middle section.connect .box_connect .images {margin:  0 auto;float: none;}
+#middle section.connect .box_connect .desc {width: 240px;margin: auto;float: none}
+#middle section.connect .box_connect .desc p{margin: 0 0 20px 0}
+#middle section.connect .box_connect .desc a.btn_connect {margin: auto}
+#middle section.connect .box_connect .desc a {text-align: left}
+#middle section.connect .box_connect .desc a.blueBorderButtton {text-align: center;margin-top: 20px;}
+#middle section.connect .box_connect .desc a.list {width: 130px;margin: 10px auto;}
+#middle section.connect .box_connect .desc a.social_list {margin: 4px auto;width: 185px;}
+#middle section.connect p.pfoot {width: 300px;}
+
+#middle section.wwa .left .text {width: 280px;top: 75px;}
+#middle section.wwa .right .logo_about img,
+#middle section.wwa .right .logo_about {width: 280px;}
+
+#middle section.our_vision .text, 
+#middle section.wwd .text {width: 280px;padding-top: 85px}
+#middle section.wt .content .left,
+#middle section.wt .content .right {
+    width: 280px;
+    margin: 0 auto;
+    padding: 0;
+}
+#middle section.wt .content .left{margin: 40px auto;}
+
+#middle section.recognition .content, 
+#middle section.recognition .inner_content ,
+#middle section.recognition .inner_content .box_recog {width: 290px;}
+
+#middle section.services_top .content, 
+#middle section.services_top .content .left, 
+#middle section.services_top .content .right {width: 290px}
+#middle section.services_top .content .left p{font-size: 12px;line-height: 21px;}
+#middle section.services_top .content .right img{width: 160px}
+
+#middle section.services_middle{z-index: 3}
+#middle section.services_middle .content {width: 300px;height: auto; }
+#middle section.services_middle .title span{
+    background:url(../images/material/services_title320.jpg) no-repeat center;
+    width: 163px;
+    padding: 10px 60px;
+    height: 27px;
+    letter-spacing: 2.5px;
+    line-height: 15px;
+}
+#middle section.services_middle .services_logo, 
+#middle section.services_middle .services_logo .logo_animate img {width: 300px;height: 123px}
+#middle section.services_middle .box_detail {
+    transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+
+}
+#middle section.services_middle .box_detail.d1 {left: 0px;}
+#middle section.services_middle .box_detail.d2{left:85px }
+#middle section.services_middle .box_detail.d3{left:185px }
+#middle section.services_middle .box_detail.d4{left:86px }
+#middle section.services_middle .box_detail.d5{left:173px }
+#middle section.services_middle .box_detail.d6{left:272px }
+#middle section.services_middle .box_detail .label {font-size: 13px}
+#middle section.services_middle .box_detail .label {top: -25px;}    
+#middle section.services_middle .box_detail ul {
+    width: 140px;
+    height: auto;
+    padding: 15px 10px;
+    font-size: 13px;
+}
+
+#middle section.services_bottom .content {width: 260px;}
+#middle section.services_bottom .box_services h1 {font-size: 14px;letter-spacing: 2px;}
+#middle section.casestudies_list .content {width: 280px;}
+#middle section.casestudies_list .menu_category {width: 280px;}
+#middle section.casestudies_list .menu_category a {font-size: 12px;}
+#middle section.casestudies_list .menu_category span {padding: 0px 7px;}
+#middle section.casestudies_list .menu_category .search {
+    background: url(../images/material/search_ico.png) no-repeat 248px center;
+    width: 248px;
+}
+#middle section.casestudies_list .wrap_list .box_casestudy {width: 285px;height: 230px;}
+#middle section.casestudies_list .wrap_list .box_casestudy .images {width: 285px;height: 175px;}
+#middle section.casestudies_list .wrap_list .box_casestudy h6 {margin: 16px 0px 5px;}
+
+#middle section.cs_bottom h2{font-size: 17px;letter-spacing: 4px}
+#middle section.cs_bottom a.whiteBorderButton {width: 260px;}
+#middle section.share .left {min-width: 194px;}
+#middle section.share.top .right {min-width: 126px;}
+#middle section.share a {width: 37.8px;}
+#middle section.share .left a:first-child {display: none;}
+#middle section.share a.share_ico img {left: -8px;width: 55px;top: -50px;}
+#middle section.share a.direction._right img {width: 108px;top: 0px;}
+#middle section.share a.direction._left img {right: -61px;width: 108px;top: 0;}
+
+#middle section.dp .content .box_dp {height: 145px;margin:10px 0 35px}
+#middle section.dp .content .box_dp h6 {top: 90px;font-size: 10px;}
+#middle section.dp .content .box_dp .images img {max-width: 95px;}
+#middle section.sec3 {height: 260px;}
+
+
+#middle section.project_story .content, 
+#middle section.project_detail .content {width: 300px;}
+#middle section.project_story .content .wrap_csimage .list_images .bt_ a {
+    width: 40px;
+    height: 40px;
+    margin:0 7px
+
+}
+#middle section.result .content{width: 280px;}
+#middle section.result .content .box_result {
+    width: 280px;
+    margin: 45px auto 70px auto;
+}
+
+#middle section.sec3 h2{width: 235px;}
+#middle section.sec3 .whiteBorderButton{
+    width: 296px
+}
+#middle section.casestudies_list .wrap_list.detail{height: 560px;}
+#middle section.blog_list.blog_detail .wrap_list{height: 895px}
+
+
+#middle section.career_list .content {width: 300px;}
+#middle section.career_list .box_career {
+    width: 300px;
+    height: 235px;
+}
+#middle section.career_list .box_career h5 {margin: 50px 0 25px 0;}
+#middle section.career_list .box_career h6 {margin: 0 0 30px 0;}
+#middle section.career_list .box_career h1 {font-size: 27px;}
+
+#middle section.contact_top .wrap_navtab .nav h3 {font-size: 12px;letter-spacing: 2px;}
+#middle section.contact_top .wrap_navtab .nav h6 {font-size: 9px;letter-spacing: 1.5px;}
+#middle section.contact_top .wrap_navtab .spar {top: 49px;width: 85px;}
+#middle section.contact_top .wrap_navtab .nav.active img.arr {bottom: -7px;margin-right: -27.5px}
+#middle section.form_contact .content_tab {width: 280px;}
+#middle section.contact_bottom h1 {margin: 0 0 25px 0;}
+#middle section.contact_bottom p {font-size: 12px;letter-spacing: 2px;}
+#middle section.contact_bottom a.socmed {margin: 0 10px;}
+
+#middle section.wrap_banner.career .banner_std{background-position:600px 0 !important;}
+
+#middle section.wt .content {width: 100%;}
+#middle section.wwa .right .logo_about{top:85px}
+#middle section.wt .content .left{padding: 40px 0;margin: 0 auto}
+#middle section.wt .right .box_images {margin: 0px auto 0;float: none;}
+
+
+form .row input[type=text],
+form .row textarea,
+form .row.floating_input textarea {width: 260px;}
+form .row.button input[type=submit], form .row.button input[type=button] {
+    padding: 0 0;
+    width: 100%;
+}
+form .row .checkbox_wrap label span {max-width: 210px;}
+
+
+/*footer
+----------------------------------------------------------------------------------------------*/
+
+/*popup
+----------------------------------------------------------------------------------------------*/
+.wrap_popup_form .inner_content {width: 280px;}
+
+.wrap_popuprecog .left .text {width: 280px;}
+
+.wrap_popupcareer h2 {font-size: 28px;margin-bottom: 35px;}
+.wrap_popupcareer .detail_req .left {width: 280px;}
+.wrap_popupcareer .detail_req .right {width: 248px;padding: 20px 15px;}
+.wrap_popupcareer .blueBorderButtton{margin: 40px auto 30px auto;}
+.wrap_popupcareer .detail_req ul {font-size: 12px;line-height: 21px;}
+.wrap_popupcareer .tab_2 {width: 280px;}
+.wrap_popupcareer form .row input[type=text], 
+.wrap_popupcareer form .row textarea,
+.wrap_popupcareer form .row.floating_input textarea {width: 260px;min-width: 260px;}
+
+/*loader
+----------------------------------------------------------------------------------------------*/
+.loader .logo_animate_ {left: -25px}
+.loader .logo_ img{height: auto;}

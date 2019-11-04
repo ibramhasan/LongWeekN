@@ -1,0 +1,431 @@
+/*
+ Company    : PT Web Architect Technology - webarq.com
+ Document   : Javascript Plugin Execute
+ Author     : Rizki Nida Chaerulsyah - akuiki.net
+ */
+var window_width = $(window).width();
+$(document).ready(function () {
+
+    //new added 
+    $(".our-clientnew .slider").slick({
+        slidesToShow: 4,
+        responsive: [
+            {
+                breakpoint: 900,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 720,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 425,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ]
+    });
+    connectFormFocus();
+    hoverButton();
+    slider_liw();
+
+    $("form").submit(function (e) {
+//        e.preventDefault();
+        if ($(this).find('.g-recaptcha').length) {
+            var googleResponse = $(this).find('.g-recaptcha-response').val();
+            if (!googleResponse) {
+                alert('Please fill up the captcha.');
+                return false;
+            } else {
+                return true;
+            }
+        }
+//        $(this).find("*[required]").val("");
+    });
+
+    //end
+
+
+    if ($("#middle.not_found").length)
+        $("#middle.not_found").height($(window).height())
+
+    TweenMax.to($(window), 0, {
+        scrollTo: {
+            y: 0,
+            autoKill: true
+        },
+        ease: Cubic.easeInOut
+    });
+    $(".loader").loadProgress();//loader progres run
+
+    $(".wrap_popup_form .content").mCustomScrollbar({
+        theme: "minimal-dark",
+        alwaysShowScrollbar: 2,
+        autoHideScrollbar: false,
+        scrollbarPosition: "inside"
+    });
+    $(".wrap_popuprecog .wrap_content").mCustomScrollbar({
+        theme: "minimal-dark",
+        alwaysShowScrollbar: 2,
+        autoHideScrollbar: true,
+        scrollbarPosition: "inside"
+    });
+    $("header").headerScroll({
+        on_page: 'home',
+        current_page: current_page
+    });//header animation
+
+
+
+
+
+    $(".box_services").servicesHover();
+    hoverShare();
+    popupRecog();//plug recognition popup    
+    servicesPointHover();//hover services point at logo
+    servicesPointAction();//action click services point at logo
+
+    $("ul.case_study_slide").swipeSlide({
+        speed: 0.8,
+        nav_wrapper: $(".banner_std .nav"),
+        slide_height: 440,
+        ease: Cubic.easeOut,
+        auto: true
+    })//slide case study init
+
+
+
+    caseStudyDrop()//drop case study category
+    $(".box_casestudy").hoverCaseStudy(); //case study hover
+    $(".box_blog").hoverCaseStudy(); //blog hover
+
+    $(".wrap_csimage .list_images").hoverDetCsImg();
+
+    $("#file_1").fileInput();
+    $("#file_2").fileInput();
+    $(".box_career,.box_career .whiteBorderButton").popupCareer();//popup_career
+    tabPopupCareer();//switch tab popup_career
+    tabContact();//contact tab
+    recognitionListFix()//recognition list fix view
+    backTopBT()//fadeIn FadeOut bact to top button
+    box_recogHover()// recognition hover function
+
+    navtabAnimate()//contact tab animatiion
+    fixThanksWrapper()//fix wrapper thanks page
+
+    box_dp_animate()//animate border fadeIn box digital platform
+
+    if ($(".wrap_banner.about").length)
+        aboutBanner({
+            video: "images/material/about_vid.mp4",
+            image: "images/content/banner_about_1.jpg",
+            poster: "images/content/banner_cover.jpg",
+        })//resizer banner / autoplay
+});
+$(window).load(function () {
+    $(window).smoothScroll({
+        on_page: 'home',
+        current_page: current_page
+    });//smooth scrolling page
+
+    //    if($(this).width()<768){
+    if ($(".loader").is(":visible")) {
+        $('.loader .logo_').delay(300).fadeIn(500);
+        $(".loader").delay(1500).slideUp(500)
+    }
+    //  }
+
+    //animating banner home
+    $(".banner_home .line").AnimateLineBanner({
+        speed: 2,
+        delay: 2
+    });
+    $(".banner_home .pattern").AnimateLineBanner({
+        speed: 2,
+        delay: 2
+    });
+    animateBannerContent(2)
+    //-- 
+    // standard animating run
+    $(".animate_from_top").animationFrom({
+        from: 'from_top',
+        time: 0.7,
+        ease: Cubic.easeOut
+    });
+    $(".animate_from_bottom").animationFrom({
+        from: 'from_bottom',
+        time: 0.7,
+        ease: Cubic.easeOut
+    });
+    $(".animate_from_left").animationFrom({
+        from: 'from_left',
+        time: 0.7,
+        ease: Cubic.easeOut
+    });
+    $(".animate_from_right").animationFrom({
+        from: 'from_right',
+        time: 0.7,
+        ease: Cubic.easeOut
+    });
+
+    $('.white_fliphover').hoverButton({
+        to: 'flip',
+        to_bg: "#FFF",
+        speed: 0.5,
+        to_color: "#014679"
+    })
+    $('.blue_fliphover').hoverButton({
+        to: 'flip',
+        to_bg: "#014679",
+        speed: 0.5,
+        to_color: "#FFF"
+
+    })
+    $('.hwhite_stdhover').hoverButton({
+        to: 'slide',
+        to_bg: "#EEE",
+        speed: 0.3,
+        to_color: "#999"
+    })
+    $('.hwhite_stdhover2').hoverButton({
+        to: 'slide',
+        to_bg: "#014679",
+        speed: 0.3,
+        to_color: "#FFF"
+    })
+    //-- 
+    $(".countup").countUpNumber({
+        speed: 2,
+        triggerElem: $(".box_result")
+    })
+    $(".chart").growChart({
+        speed: 1.5,
+        easing: Linear.easeOut,
+        triggerElem: $(".box_result")
+    })
+
+    $(this).fixHeightBanner({
+        'wrap_banner': ".wrap_banner.home",
+        'content_banner': ".wrap_banner.home .banner_home"
+    });
+    $(".wrap_slide_clients .box_client").fixViewClient();
+    $(".slide_clients").fixWrapperSlideClient({
+        'sync_with': $(".slide_clients .box_client")
+    });
+    fixConnect_section()
+    fixViewPopupForm()
+    fixViewList() //fix view listblog / casestudies
+    mobileMenu()// mobile menu in action
+
+
+
+    $(".wrap_slide_clients").static_ajaxLoad({// home ajax load  slide clients section
+        onComplete: function () {
+            $(".slide_clients").slideInAction({//slider our_client
+                'element_height': $(".wrap_slide_clients .box_client"),
+                'nav_element': $(".wrap_slide_clients .nav_slide"),
+                'time': 0.5,
+                'ease': Quint.easeOut
+            });
+            $('.blue_fliphover.ajaxc').hoverButton({
+                to: 'flip',
+                to_bg: "#014679",
+                speed: 0.5,
+                to_color: "#FFF"
+
+            });
+            $(".img_bg img").on('load', function () {
+                $(".wrap_slide_clients .box_client").fixViewClient();
+                $(".slide_clients").fixWrapperSlideClient({
+                    'sync_with': $(".slide_clients .box_client")
+                })
+            });
+            $(".wrap_slide_clients .box_client").fixViewClient();
+            $(".slide_clients").fixWrapperSlideClient({
+                'sync_with': $(".slide_clients .box_client")
+            })
+
+            $(".our_client .box_client").boxClientHover();//hover box_client
+
+        }
+    });
+
+    $(".wrap_slide_cs").static_ajaxLoad({// home ajax load  slide case_studies section
+        onComplete: function () {
+            $("ul.slide_cs").swipeSlide({
+                speed: 1.2,
+                nav_wrapper: $(".wrap_slide_cs .nav_slide"),
+                slide_height: 620,
+                ease: Cubic.easeOut,
+                //        auto:true,
+                intervalTime: 10,
+                onNext: function () {
+                    if ($("ul.slide_cs li.active").next('li').length)
+                        e_next = $("ul.slide_cs li.active").next('li');
+                    else
+                        e_next = $("ul.slide_cs ").find('li:first-child');
+                    name_function = e_next.attr('running_animate');
+                    window[name_function]('reset');
+                    setTimeout(function () {
+                        window[name_function]('animating');
+                    }, 1000)
+                },
+                onPrev: function () {
+                    if ($("ul.slide_cs li.active").prev('li').length)
+                        e_next = $("ul.slide_cs li.active").prev('li');
+                    else
+                        e_next = $("ul.slide_cs ").find('li:last-child');
+                    name_function = e_next.attr('running_animate');
+                    window[name_function]('reset');
+                    setTimeout(function () {
+                        window[name_function]('animating');
+                    }, 1000)
+                }
+
+            })//slide case study init
+
+            fixcsHomeSlider() //fix slider case study home
+
+            $('.bt_link.indomaret').hoverButton({
+                to: 'flip',
+                to_bg: "#fe9321",
+                speed: 0.5,
+                to_color: "#FFF"
+            })
+            $('.bt_link.wse').hoverButton({
+                to: 'flip',
+                to_bg: "#a7228f",
+                speed: 0.5,
+                to_color: "#FFF"
+            })
+            $('.bt_link.monex').hoverButton({
+                to: 'flip',
+                to_bg: "#143a06",
+                speed: 0.5,
+                to_color: "#FFF"
+            })
+            setTimeout(function () {
+                window['animateBiskiesCs']('reset');
+                window['animateIndomaretCs']('reset');
+                window['animateMonexCs']('reset');
+                window['animateWseCs']('reset');
+            }, 500)
+            if ($(".wrap_slide_cs").isOnScreen())
+                setTimeout(function () {
+                    window['animateIndomaretCs']('animating');
+                }, 500)
+
+            $(window).scroll(function () {
+                if ($(".wrap_slide_cs").isOnScreen())
+                    setTimeout(function () {
+                        window['animateIndomaretCs']('animating');
+                    }, 500)
+            })
+        }
+    });
+    $(".case_study_list").infinite_ajaxLoad({
+        beforeSend: function () {
+            TweenMax.to($(".load_more"), 0.3, {
+                css: {
+                    bottom: 0,
+                    opacity: 1
+                }
+            });
+        },
+        onComplete: function () {
+            $(".box_casestudy").hoverCaseStudy();
+            $('.case_study_list .white_fliphover').hoverButton({
+                to: 'flip',
+                to_bg: "#FFF",
+                speed: 0.5,
+                to_color: "#014679"
+            })
+            TweenMax.to($(".load_more"), 0.3, {
+                css: {
+                    bottom: -30,
+                    opacity: 0
+                }
+            });
+            fixViewList();
+
+        }
+    });
+    $(".wblog_list").infinite_ajaxLoad({
+        beforeSend: function () {
+            TweenMax.to($(".load_more"), 0.3, {
+                css: {
+                    bottom: 0,
+                    opacity: 1
+                }
+            });
+        },
+        onComplete: function () {
+            $(".box_blog").hoverCaseStudy();
+            TweenMax.to($(".load_more"), 0.3, {
+                css: {
+                    bottom: -30,
+                    opacity: 0
+                }
+            });
+            fixViewList()
+
+        }
+    });
+//ajax static load
+})
+$(window).resize(function () {
+    fixcsHomeSlider() //fix slider case study home
+    fixViewList() //fix view listblog / casestudies
+    recognitionListFix()//recognition list fix view
+    TweenMax.to($(".slide_clients"), 0.5, {
+        scrollTo: {
+            y: 0,
+            autoKill: true
+        },
+        ease: Power1.easeOut
+    });
+    $(".wrap_slide_clients .box_client").fixViewClient();
+    $(".slide_clients").fixWrapperSlideClient({
+        'sync_with': $(".slide_clients .box_client")
+    })
+    fixConnect_section()
+    $(this).fixHeightBanner({
+        'wrap_banner': ".wrap_banner.home",
+        'content_banner': ".wrap_banner.home .banner_home"
+    })
+
+    fixViewPopupForm()
+    fixThanksWrapper()//fix wrapper thanks page
+
+})
+$(window).scroll(function () {
+    box_dp_animate()//animate border fadeIn box digital platform
+
+    $(".parralax_plug").parralaxCon({
+        distance_move: 0.4,
+        speed: 0.2
+    });
+    if ($("section.services_middle").isOnScreen()) {
+        $("section.services_middle .line").AnimateLineBanner({
+            speed: 1,
+            delay: 1.2
+        });
+        $("section.services_middle .line_box").delay(1800).fadeIn();
+    }
+    backTopBT()//fadeIn FadeOut bact to top button
+    if ($(this).scrollTop() > $(window).height())
+        $("#middle section.connect .connect_").css({
+            display: 'block'
+        });
+    else
+        $("#middle section.connect .connect_").css({
+            display: 'none'
+        });
+
+
+})

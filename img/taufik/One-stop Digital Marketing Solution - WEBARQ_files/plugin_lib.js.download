@@ -1,0 +1,2302 @@
+/*=============================================================================================	
+ Company    : PT Web Architect Technology - webarq.com
+ Document   : Javascript Plugin Lib
+ Author     : Rizki Nida Chaerulsyah - akuiki.net
+ ==============================================================================================*/
+$.fn.isOnScreen = function () {
+    if (this.length) {
+        var viewport = {};
+        viewport.top = $(window).scrollTop();
+        viewport.bottom = viewport.top + $(window).height();
+        var bounds = {};
+        bounds.top = this.offset().top;
+        bounds.bottom = bounds.top + this.outerHeight();
+        return ((bounds.top <= viewport.bottom) && (bounds.bottom >= viewport.top));
+    } else
+        return false
+};
+
+$.fn.loadProgress = function () {
+    //console.log(var_def);
+    var wrapper = this,
+            bar = this.find(".trackBar"),
+            percentage = this.find('.precentage'),
+            count_load = 0,
+            count_loads = 0,
+            eloading = $("body img").length;
+
+    //    $("body img").each(function(){//fix loading cache di ie
+    //        src_img = $(this).attr('src');
+    //        $(this).attr('src',src_img+ "?" + new Date().getTime())
+    //    //        console.log($(this).attr('src'))
+    //    })    
+
+    progressload();
+    //    setInterval(function(){
+    //        progressload();
+    //    },100)
+    //    var interval_load= setInterval(function(){
+    //        count_loads++;
+    //        if(count_loads > 10){
+    //            if(count_load <=eloading){
+    //                count_load =eloading;                
+    //                animateLoad(100 + '%');
+    //            
+    //            }
+    //        }
+    //    },1000)
+    function progressload() {
+        $("body img").bind('load', function () {
+            if (count_load < eloading) {
+                count_load++;
+                var width = (count_load / eloading) * 100;
+                animateLoad(width);
+            }
+            //  console.log(count_load +"  -  "+eloading + "  -  " + $(this).attr('src'));        
+        });
+
+    }
+    function animateLoad(width) {
+        TweenMax.to(bar, 0.3, {
+            css: {
+                width: width + "%"
+            }
+        })
+        percentage.html(Math.ceil(width) + "%");
+        setTimeout(function () {
+            hideLoading(count_load, eloading)
+        }, 500)
+        //11        console.log(count_load+" - "+eloading)
+    }
+    function hideLoading(count_load, eloading) {
+        //        if(count_load ==eloading){
+        //            wrapper.find('.logo_').delay(300).fadeIn(500);
+        //            wrapper.delay(1300).slideUp(500)
+        //            TweenMax.to(wrapper,1,{
+        //                css:{
+        //                    //                    scale:3,
+        //                    opacity:0
+        //                },
+        //                onComplete:function(){
+        //                    wrapper.css({
+        //                        display:'none'
+        //                    });  
+        //                },
+        //                ease:Cubic.easeOut
+        //            })
+        //            clearInterval(interval_load);            
+        //}
+    }
+
+};
+$.fn.smoothScroll = function (e) {
+    var $window = this,
+            scrollTime = 0.5,
+            scrollDistance = 150,
+            sectionScroll = {};
+    sectionScroll.flag = true;
+//    if (e.on_page == e.current_page) {
+//        $(window).resize(function () {
+//            sectionScroll.flag = true;
+//
+//            $("#middle section").each(function () {
+//                if ($(this).height() > $(window).height()) {
+//                    sectionScroll.flag = false;
+//                }
+//            })
+//        })
+//    }
+    $window.bind("mousewheel", function (event, delta) {
+        flag_scroll = true;
+        if ($(window).width() > 1024) {
+            if (delta > 3 || delta < -3)
+                flag_scroll = false;
+            else
+                flag_scroll = true;
+            if (flag_scroll) {
+//                event.preventDefault();
+
+                //        var delta = 0;
+                //        if (event.type == 'mousewheel') {
+                //            delta = (event.originalEvent.wheelDelta * 1)/120;
+                //            console.log("w"+event.originalEvent.wheelDelta);
+                //        }
+                //        else if (event.type == 'DOMMouseScroll') {
+                //            delta = (40 * event.originalEvent.detail)/3;
+                //            console.log("d"+event.originalEvent.detail);
+                //        }
+                scrollTop = $window.scrollTop();
+                if (delta < 0)
+                    _delta = -1;
+                else
+                    _delta = 1;
+//                finalScroll = scrollTop - parseInt(_delta * scrollDistance);
+//                console.log(delta)
+
+//                sectionScroll.flag = true;
+//                $("#middle section").each(function () {
+//                    height_section = parseInt($(this).css('height')) + parseInt($(this).css('padding-top'));
+//                    if (!$(this).hasClass('home')) {
+//                        if (height_section > ($(window).height() - 99)) {
+//                            sectionScroll.flag = false;
+//                            return false;
+//                        }
+//                        //                console.log(($(window).height()-99) +" - "+height_section+" - "+ $(this).attr('class'))
+//                    }
+//                })
+//                if (e.on_page != e.current_page) {
+//                    sectionScroll.flag = false;
+//                }
+
+                if (sectionScroll.flag) {
+//                    sectionScroll.next = function () {
+//                        if (scrollTop < finalScroll) {
+//                            if ($('#middle section.active_sec').next('section').length)
+//                                final_ = $('#middle section.active_sec').removeClass('active_sec').next('section').addClass('active_sec').offset().top - 99;
+//                            else
+//                                sectionScroll.flag = false;
+//                        } else {
+//                            if ($('#middle section.active_sec').prev('section').length)
+//                                final_ = $('#middle section.active_sec').removeClass('active_sec').prev('section').addClass('active_sec').offset().top - 99;
+//                            else
+//                                sectionScroll.flag = false;
+//
+//                        }
+//                        return final_;
+//                    }
+//                    if (!TweenMax.isTweening($window))
+//                        TweenMax.to($window, 1, {
+//                            scrollTo: {
+//                                y: sectionScroll.next()
+//                                        // autoKill:true
+//                            },
+//                            ease: Cubic.easeInOut,
+//                            overwrite: 5
+//                        });
+
+                } else {
+//                    TweenMax.to($window, scrollTime, {
+//                        scrollTo: {
+//                            y: finalScroll
+//                                    //autoKill:true
+//                        },
+//                        ease: Power1.easeOut,
+//                        overwrite: 5
+//                    });
+                    $("#middle section").each(function () {
+                        height_section = ($(this).attr('class') == "wrap_banner home") ? $(this).height() : $(this).height() + 99;
+                        position = $(this).offset().top + height_section
+                        if ($(this).isOnScreen() && ($(this).height() > $(window).height())) {
+                            sectionScroll.flag = false;
+                            $("#middle section.active_sec").removeClass('active_sec');
+                            $(this).addClass('active_sec');
+                        }
+                    });
+
+                }
+            }
+        }
+    });
+    $(window).scroll(function (delta) {
+        if ($(window).width() > 768) {
+            var scrollTop = $window.scrollTop();
+            if ($(".banner_home").length || $(".banner_std").length)
+                scrollTop_parralax = scrollTop / 3;
+            if ($(".banner_home").length)
+                TweenMax.to($(".banner_home"), 0.2, {
+                    css: {
+                        top: -scrollTop_parralax
+                    },
+                    overwrite: 5
+                });
+
+            if ($(".banner_std").length)
+                TweenMax.to($(".banner_std"), 0.2, {
+                    css: {
+                        top: -scrollTop_parralax
+                    },
+                    overwrite: 5
+                });
+
+        } else {
+            $(".banner_home,.banner_std").css({
+                top: 0
+            })
+        }
+    });
+}
+$.fn.headerScroll = function (e) {
+    var header = this;
+    var effect = {};
+    effect.show = function () {
+        if (!TweenMax.isTweening(header))
+            TweenMax.to(header.find('.bg'), 0.3, {
+                css: {
+                    top: '0px',
+                    opacity: 1
+                },
+                ease: Cubic.easeOut,
+                onComplete: function () {
+                }
+            })
+        header.addClass('active');
+    }
+    effect.hide = function () {
+        if (!TweenMax.isTweening(header))
+            TweenMax.to(header.find('.bg'), 0.3, {
+                css: {
+                    top: '-109px',
+                    opacity: 0
+                },
+                ease: Cubic.linear,
+                onComplete: function () {
+                }
+
+            });
+        header.removeClass('active');
+    }
+
+    if ((e.on_page != e.current_page) || ($(window).width() <= 1300)) {
+        effect.show();
+    }
+    $(window).scroll(function () {
+        if (e.on_page == e.current_page) {
+            if ($(window).width() > 1300)
+                if ($(this).scrollTop() > 50) {
+                    effect.show();
+                } else {
+                    effect.hide();
+                }
+        }
+    });
+    $(window).resize(function () {
+        if ($(this).width() < 1300)
+            effect.show();
+        else
+            effect.hide();
+
+        if ($(this).width() >= 1300 && (e.on_page != e.current_page))
+            effect.show();
+    });
+}
+
+$.fn.fixHeightBanner = function (def) {
+    var window_height = this.height();
+    $(def['wrap_banner']).height(window_height);
+    $(def['content_banner']).height(window_height);
+}
+$.fn.AnimateLineBanner = function (def) {
+    elem = this;
+    elem.each(function () {
+        //        console.log($(this).find('img').width() +" - "+$(this).find('img').height())
+        TweenMax.to($(this), def.speed, {
+            css: {
+                width: $(this).find('img').width(),
+                height: $(this).find('img').height()
+            },
+            delay: parseInt(def.delay),
+            ease: Cubic.linear
+        })
+    });
+}
+$.fn.fixViewClient = function () {
+    var elem = this,
+            window_width = $(window).width(),
+            box_width = parseFloat(window_width) / 6,
+            box_bt_learn = box_width * 2;
+
+    if (parseInt(window_width) < 1366) {
+        box_width = parseFloat(window_width) / 4;
+        box_bt_learn = box_width * 2;
+    }
+    if (parseInt(window_width) < 850 && parseInt(window_width) >= 768) {
+        box_width = parseFloat(window_width) / 2;
+        box_bt_learn = box_width * 2;
+    }
+
+    if (parseInt(window_width) < 768 && parseInt(window_width) >= 480) {
+        box_width = parseFloat(window_width) / 2;
+        box_bt_learn = box_width * 2;
+    }
+
+    if (parseInt(window_width) < 480 && parseInt(window_width) >= 0) {
+        box_width = parseFloat(window_width) / 1;
+        box_bt_learn = box_width;
+    }
+
+    elem.width(box_width);
+    elem.height(elem.find('.img_bg img').height());
+
+    var btn_learn = elem.parents('.wrap_slide_clients').find(".btn_learn")
+    TweenMax.to(btn_learn, 0.3, {
+        css: {
+            top: elem.find('.img_bg img').height(),
+            width: box_bt_learn,
+            height: elem.find('.img_bg img').height()
+        }
+    })
+}
+$.fn.fixWrapperSlideClient = function (e) {
+    var wrapper = this,
+            box_client_height = e.sync_with.height();
+    //    elem_length = e.sync_with.length;
+    //    window_width = $(window).width()/e.sync_with.width();
+    //    row_count= elem_length/window_width;
+    //console.log(row_count +" - "+$(window).width() +" - "+e.sync_with.width()  )
+    wrapper.height(box_client_height * 3);
+}
+$.fn.slideInAction = function (e) {
+    var wrapper = this,
+            height_slide = e.element_height,
+            next_element = e.nav_element.find('.direction.next a'),
+            prev_element = e.nav_element.find('.direction.prev a'),
+            time = parseFloat(e.time),
+            ease = e.ease,
+            type = (e.type ? e.type : "standard_slide");
+    next_element.on('click', function (e) {
+        scroll_top = wrapper.scrollTop();
+        height_slide_ = height_slide.height();
+        if (scroll_top == wrapper.innerHeight())
+            final_sc = 0
+        else
+            final_sc = parseFloat(scroll_top) + height_slide_;
+        //        console.log(scroll_top+height_slide.height()+" - "+wrapper.innerHeight() );
+        switch (type) {
+            case "standard_slide":
+                if (!TweenMax.isTweening(wrapper)) {
+                    TweenMax.to(wrapper, time, {
+                        scrollTo: {
+                            y: final_sc,
+                            autoKill: true
+                        },
+                        ease: ease
+                    });
+                }
+                break;
+            case "zoom_out":
+                if (!TweenMax.isTweening(wrapper.find('.img'))) {
+                    TweenMax.to(wrapper.find('.img'), time, {
+                        css: {
+                            scale: 1.1,
+                            opacity: 0
+                        },
+                        ease: ease,
+                        onComplete: function () {
+                            wrapper.scrollTop(parseFloat(scroll_top) + height_slide_);
+                            TweenMax.to(wrapper.find('.img'), time, {
+                                css: {
+                                    scale: 1,
+                                    opacity: 1
+                                },
+                                ease: ease
+                            });
+                        }
+                    });
+                }
+
+                break;
+
+        }
+    })
+    prev_element.on('click', function (e) {
+        scroll_top = wrapper.scrollTop();
+        height_slide_ = height_slide.height();
+        if (parseFloat(scroll_top) - height_slide_ < 0)
+            final_sc = wrapper.innerHeight();
+        else
+            final_sc = parseFloat(scroll_top) - height_slide_
+        switch (type) {
+            case "standard_slide":
+                if (!TweenMax.isTweening(wrapper)) {
+                    TweenMax.to(wrapper, time, {
+                        scrollTo: {
+                            y: final_sc,
+                            autoKill: true
+                        },
+                        ease: ease
+                    });
+                }
+                break;
+            case "zoom_out":
+                if (!TweenMax.isTweening(wrapper.find('.img'))) {
+                    height_slide_ = height_slide.height();
+                    TweenMax.to(wrapper.find('.img'), time, {
+                        css: {
+                            scale: 0.9,
+                            opacity: 0
+                        },
+                        ease: ease,
+                        onComplete: function () {
+                            wrapper.scrollTop(final_sc);
+                            TweenMax.to(wrapper.find('.img'), time, {
+                                css: {
+                                    scale: 1,
+                                    opacity: 1
+                                },
+                                ease: ease
+                            });
+                        }
+                    });
+                }
+                break;
+
+        }
+
+        //        console.log(parseFloat(scroll_top)-height_slide +" ")
+
+    })
+}
+$.fn.boxClientHover = function () {
+    var elem = this;
+    elem.hover(function () {
+        bg_img = $(this).find('.img_bg');
+        logo = $(this).find('.img_logo');
+        text = $(this).find('.text');
+        arr = $(this).find('.arr');
+        arr_img = $(this).find('.arr img');
+
+        TweenMax.to(logo, 0.3, {
+            css: {
+                top: 10,
+                opacity: 0
+            },
+            ease: Cubic.easeOut
+        });
+        TweenMax.to(bg_img, 0.3, {
+            css: {
+                scale: 1.1
+            },
+            ease: Cubic.easeOut
+        });
+        TweenMax.to(text, 0.3, {
+            css: {
+                top: 0,
+                opacity: 1
+            },
+            ease: Cubic.easeOut
+        });
+        TweenMax.to(arr, 0.3, {
+            css: {
+                opacity: 1
+            },
+            ease: Cubic.easeOut
+        })
+        TweenMax.to(arr_img, 0.3, {
+            css: {
+                right: 0
+            },
+            ease: Cubic.easeOut
+        });
+    }, function () {
+        bg_img = $(this).find('.img_bg');
+        logo = $(this).find('.img_logo');
+        text = $(this).find('.text');
+        arr = $(this).find('.arr');
+        arr_img = $(this).find('.arr img');
+        TweenMax.to(logo, 0.3, {
+            css: {
+                top: 0,
+                opacity: 1
+            },
+            ease: Cubic.easeOut
+        });
+        TweenMax.to(bg_img, 0.3, {
+            css: {
+                scale: 1
+            },
+            ease: Cubic.easeOut
+        });
+        TweenMax.to(text, 0.3, {
+            css: {
+                top: -20,
+                opacity: 0
+            },
+            ease: Cubic.easeOut
+        });
+        TweenMax.to(arr, 0.3, {
+            css: {
+                opacity: 0
+            },
+            ease: Cubic.easeOut
+        });
+        TweenMax.to(arr_img, 0.3, {
+            css: {
+                right: -20
+            },
+            ease: Cubic.easeOut
+        });
+
+    });
+}
+$.fn.animationFrom = function (e) {
+    if ($(window).width() > 800) {
+        var elem = this,
+                from = e.from,
+                time = e.time,
+                ease = e.ease;
+        elem.each(function () {
+            TweenMax.set($(this), {
+                position: 'relative',
+                opacity: 0
+            });
+            switch (from) {
+                case "from_top":
+                    TweenMax.set($(this), {
+                        top: '-50px'
+                    });
+                    break;
+                case "from_bottom":
+                    TweenMax.set($(this), {
+                        bottom: '-50px'
+                    });
+                    break;
+                case "from_left":
+                    TweenMax.set($(this), {
+                        left: '-50px'
+                    });
+                    break;
+                case "from_right":
+                    TweenMax.set($(this), {
+                        right: '-50px'
+                    });
+                    break;
+            }
+        });
+        $(window).scroll(function () {
+            elem.animatingFrom({
+                from: from,
+                time: time,
+                ease: ease
+            })
+        });
+        elem.animatingFrom({
+            from: from,
+            time: time,
+            ease: ease
+        })
+    }
+}
+$.fn.animatingFrom = function (e) {
+    var elem = this,
+            from = e.from,
+            time = e.time,
+            ease = e.ease;
+    elem.each(function () {
+        switch (from) {
+            case "from_top":
+                delay = parseFloat($(this).attr('delay'));
+                if ($(this).isOnScreen()) {
+                    if (!TweenMax.isTweening($(this)))
+                        TweenMax.to($(this), time, {
+                            css: {
+                                top: 0,
+                                opacity: 1
+                            },
+                            delay: delay,
+                            ease: ease
+                        })
+                }
+                break;
+            case "from_bottom":
+                delay = parseFloat($(this).attr('delay'));
+                if ($(this).isOnScreen())
+                    TweenMax.to($(this), time, {
+                        css: {
+                            bottom: 0,
+                            opacity: 1
+                        },
+                        delay: delay,
+                        ease: ease
+                    })
+
+                break;
+            case "from_left":
+                delay = parseFloat($(this).attr('delay'));
+                if ($(this).isOnScreen())
+                    TweenMax.to($(this), time, {
+                        css: {
+                            left: 0,
+                            opacity: 1
+                        },
+                        delay: delay,
+                        ease: ease
+                    })
+                break;
+            case "from_right":
+                delay = parseFloat($(this).attr('delay'));
+                if ($(this).isOnScreen() && !TweenMax.isTweening($(this)))
+                    TweenMax.to($(this), time, {
+                        css: {
+                            right: 0,
+                            opacity: 1
+                        },
+                        delay: delay,
+                        ease: ease
+                    })
+                break;
+        }
+    });
+}
+$.fn.hoverButton = function (e) {
+    var elem = this,
+            to = e.to,
+            hover_bg = e.to_bg,
+            color = e.to_color,
+            speed = parseFloat(e.speed);
+
+    switch (to) {
+        case "slide":
+            elem.each(function () {
+                elem_wrap = $(this);
+                var border_color = "";
+                if ($(this).find('.slidebg').length)
+                    $(this).find('.slidebg').remove();
+                $(this).append('<div class="slidebg">' + $(this).text() + '</div>');
+                TweenMax.set($(this), {
+                    position: 'relative',
+                    overflow: 'hidden'
+                })
+                TweenMax.set($(this).find('.slidebg'), {
+                    background: hover_bg,
+                    width: elem_wrap.css('width'),
+                    paddingLeft: elem_wrap.css('paddingLeft'),
+                    paddingRight: elem_wrap.css('paddingRight'),
+                    width: elem_wrap.css('width'),
+                    height: elem_wrap.css('height'),
+                    textAlign: elem_wrap.css('textAlign'),
+                    position: 'absolute',
+                    right: '-100%',
+                    top: 0,
+                    color: color
+                })
+                $(this).hover(function () {
+                    var border_color = $(this).css('border-color');
+                    TweenMax.to($(this), speed, {
+                        css: {
+                            'border-color': hover_bg
+                        }
+                    });
+                    TweenMax.to($(this).find('.slidebg'), speed, {
+                        css: {
+                            'right': '0'
+                        },
+                        ease: Cubic.easeOut
+                    })
+                }, function () {
+                    TweenMax.to($(this), speed, {
+                        css: {
+                            'border-color': border_color
+                        }
+                    });
+                    TweenMax.to($(this).find('.slidebg'), speed, {
+                        css: {
+                            'right': '-100%'
+                        },
+                        ease: Cubic.easeOut
+                    })
+                })
+            });
+            $(window).resize(function () {
+                elem.each(function () {
+                    elem_wrap = $(this);
+                    elem_wrap.removeAttr('style');
+                    var border_color = $(this).css('border-color');
+                    if ($(this).find('.slidebg').length)
+                        $(this).find('.slidebg').remove();
+                    $(this).append('<div class="slidebg">' + $(this).text() + '</div>');
+                    TweenMax.set($(this), {
+                        position: 'relative',
+                        overflow: 'hidden'
+                    })
+                    TweenMax.set(elem_wrap.find('.slidebg'), {
+                        background: hover_bg,
+                        //                    width:elem_wrap.css('width'),
+                        paddingLeft: elem_wrap.css('paddingLeft'),
+                        paddingRight: elem_wrap.css('paddingRight'),
+                        width: elem_wrap.css('width'),
+                        height: elem_wrap.css('height'),
+                        textAlign: elem_wrap.css('textAlign'),
+                        position: 'absolute',
+                        right: '-100%',
+                        top: 0,
+                        color: color
+                    });
+                });
+            });
+            break;
+        case "flip":
+            elem.each(function () {
+                elem_wrap = $(this);
+                if ($(this).find('.flipbg').length)
+                    $(this).find('.flipbg').remove();
+                $(this).append('<div class="flipbg">' + $(this).text() + '</div>');
+                var border_color = $(this).css('border-color');
+                if ($(this).css('position') == 'relative' || $(this).css('position') == 'absolute')
+                    position = $(this).css('position');
+                else
+                    position = 'relative';
+
+                TweenMax.set($(this), {
+                    perspective: 800,
+                    position: position,
+                    overflow: 'hidden'
+                })
+
+                TweenMax.set($(this).find('.flipbg'), {
+                    background: hover_bg,
+                    paddingLeft: elem_wrap.css('paddingLeft'),
+                    paddingRight: elem_wrap.css('paddingRight'),
+                    width: elem_wrap.css('width'),
+                    height: elem_wrap.css('height'),
+                    position: 'absolute',
+                    bottom: '0',
+                    left: 0,
+                    scale: 0.8,
+                    opacity: 0,
+                    color: color,
+                    rotationX: 90
+                })
+                $(this).hover(function () {
+                    TweenMax.to($(this), speed, {
+                        css: {
+                            'border-color': hover_bg
+                        }
+                    });
+                    TweenMax.to($(this).find('.flipbg'), speed, {
+                        css: {
+                            scale: 1,
+                            rotationX: 0,
+                            opacity: 1,
+                            bottom: 0
+                        },
+                        ease: Quint.easeOut
+                    })
+                }, function () {
+                    TweenMax.to($(this), speed, {
+                        css: {
+                            'border-color': border_color
+                        }
+                    });
+                    TweenMax.to($(this).find('.flipbg'), speed, {
+                        css: {
+                            bottom: 0,
+                            scale: 0.8,
+                            rotationX: 90,
+                            opacity: 0
+                        },
+                        ease: Quint.easeOut
+                    })
+                })
+            });
+            $(window).resize(function () {
+                elem.each(function () {
+                    elem_wrap = $(this);
+                    elem_wrap.removeAttr('style');
+                    if ($(this).find('.flipbg').length)
+                        $(this).find('.flipbg').remove();
+                    $(this).append('<div class="flipbg">' + $(this).text() + '</div>');
+                    if ($(this).css('position') == 'relative' || $(this).css('position') == 'absolute')
+                        position = $(this).css('position');
+                    else
+                        position = 'relative';
+
+                    TweenMax.set($(this), {
+                        perspective: 800,
+                        position: position,
+                        overflow: 'hidden'
+                    })
+
+                    TweenMax.set($(this).find('.flipbg'), {
+                        background: hover_bg,
+                        paddingLeft: elem_wrap.css('paddingLeft'),
+                        paddingRight: elem_wrap.css('paddingRight'),
+                        width: elem_wrap.css('width'),
+                        height: elem_wrap.css('height'),
+                        position: 'absolute',
+                        bottom: '0',
+                        left: 0,
+                        scale: 0.8,
+                        opacity: 0,
+                        color: color,
+                        rotationX: 90
+                    })
+                });
+            });
+            break;
+
+    }
+}
+$.fn.servicesHover = function () {
+    var elem = this;
+    elem.hover(function () {
+        if ($(window).width() > 1024) {
+            images = $(this).find('img');
+            title = $(this).find('h1');
+            TweenMax.to(images, 0.5, {
+                css: {
+                    top: '59px',
+                    scale: 1.1
+                },
+                ease: Cubic.easeOut
+            })
+
+            TweenMax.to(title, 0.5, {
+                css: {
+                    top: -40
+                },
+                ease: Cubic.easeOut
+            })
+        }
+    }, function () {
+        if ($(window).width() > 1024) {
+            images = $(this).find('img');
+            title = $(this).find('h1');
+            TweenMax.to(images, 0.3, {
+                css: {
+                    top: '0px',
+                    scale: 1
+                },
+                ease: Cubic.easeOut
+            })
+            TweenMax.to(title, 0.3, {
+                css: {
+                    top: '145px'
+                },
+                ease: Cubic.easeOut
+            })
+        }
+    });
+}
+$.fn.parralaxCon = function (e) {
+    if ($(window).width() > 768) {
+        var elem = this,
+                speed = e.speed;
+        elem.each(function () {
+            if ($(this).length) {
+                var distance = e.distance_move;
+                var top = $(window).scrollTop();
+                var top2 = $(this).offset().top;
+                if ($(this).isOnScreen()) {
+                    top2 = top2 - $(window).height();
+                    top = top - top2;
+                    var tambah = top * distance;
+                    //                    elem.css('background-position-y','-'+tambah+'px' );
+                    TweenMax.to($(this), speed, {
+                        css: {
+                            backgroundPosition: 'center' + ' -' + tambah + 'px'
+                        },
+                        ease: Cubic.easeOut
+                    });
+                }
+            }
+        })
+    }
+}
+$.fn.swipeSlide = function (a) {
+    var elem = this,
+            e = {},
+            t = {
+                nav_wrapper: null,
+                slide_height: 'auto',
+                speed: 1,
+                ease: Cubic.easeOut,
+                auto: false,
+                intervalTime: 4,
+                onNext: function () {
+                },
+                onPrev: function () {
+                },
+                onInit: function () {
+                }
+            };
+    e = $.extend(true, t, a);
+    var intervalStat = true,
+            nav_wrapper = e.nav_wrapper;
+    if (nav_wrapper != null) {
+        var next_bt = nav_wrapper.find('.next'),
+                prev_bt = nav_wrapper.find('.prev');
+    }
+    var slide_height = e.slide_height,
+            speed = e.speed,
+            ease = e.ease,
+            slideInterval = null,
+            slide = {},
+            action = {};
+
+    if (elem.length) {
+        slide.e_all = elem.find('li');
+        slide.e_active = function () {
+            if (elem.find('li').hasClass('active'))
+                return elem.find('li.active');
+            else
+                return elem.find('li:first-child');
+
+        }
+        slide.e_next = function () {
+            if (slide.e_active().next('li').length)
+                return slide.e_active().next('li');
+            else
+                return elem.find('li:first-child');
+        }
+        slide.e_prev = function () {
+            if (slide.e_active().prev('li').length)
+                return slide.e_active().prev('li');
+            else
+                return elem.find('li:last-child');
+        }
+        slide.innerSlide = function (e) {
+            if (e == 'init') {
+                slide.e_all.wrapInner('<div class="inner_slide"></div>');
+                return true;
+            } else if (e == 'get_element')
+                return slide.e_all.find(".inner_slide");
+
+        }
+        action.preparation = function () {
+            e.onInit();
+            slide.innerSlide('init');
+            elem.css({
+                position: 'relative',
+                width: '100%',
+                height: slide_height,
+                overflow: 'hidden'
+            });
+
+            slide.innerSlide('get_element').css({
+                position: 'absolute',
+                width: '100%'
+            });
+            slide.e_all.css({
+                position: 'absolute',
+                width: '100%',
+                height: '0px',
+                top: '-20%',
+                overflow: 'hidden',
+                zIndex: 0
+            });
+            slide.e_active().css({
+                height: slide_height,
+                top: '0px',
+                zIndex: 1
+            })
+        };
+        action.destroyAutoSlide = function () {
+            if (e.auto)
+                clearInterval(slideInterval)
+        }
+        action.startAutoSlide = function () {
+            if (e.auto)
+                slideInterval = setInterval(function () {
+                    action.next();
+                }, e.intervalTime * 1000);
+        }
+        action.next = function () {
+            e.onNext();
+            action.destroyAutoSlide();
+            next_element = slide.e_next();
+            if (!TweenMax.isTweening(next_element)) {
+                next_element.css({
+                    top: 'auto',
+                    bottom: '-20%',
+                    zIndex: 1
+                });
+                next_element.find('.inner_slide').css({
+                    top: 'auto',
+                    bottom: '0px'
+                });
+                slide.e_active().css({
+                    zIndex: 0
+                });
+
+                TweenMax.to(next_element, speed, {
+                    css: {
+                        bottom: '0px',
+                        height: elem.height()
+                    },
+                    ease: ease,
+                    onComplete: function () {
+                        slide.e_active().css({
+                            height: 0,
+                            top: '-20%'
+                        })
+                        slide.e_all.removeClass('active');
+                        next_element.addClass('active')
+                        action.startAutoSlide();
+                    }
+                });
+            }
+        }
+        action.prev = function () {
+            e.onPrev();
+            action.destroyAutoSlide();
+            prev_element = slide.e_prev();
+            if (!TweenMax.isTweening(prev_element)) {
+                prev_element.css({
+                    bottom: 'auto',
+                    top: '-20%',
+                    zIndex: 1
+                });
+                prev_element.find('.inner_slide').css({
+                    top: '0px',
+                    bottom: 'auto'
+                });
+                slide.e_active().css({
+                    zIndex: 0
+                });
+
+                TweenMax.to(prev_element, speed, {
+                    css: {
+                        top: '0px',
+                        height: elem.height()
+                    },
+                    ease: ease,
+                    onComplete: function () {
+                        slide.e_active().css({
+                            height: 0,
+                            top: '-20%'
+                        })
+                        slide.e_all.removeClass('active');
+                        prev_element.addClass('active')
+                        action.startAutoSlide();
+                    }
+                });
+            }
+        }
+        if (e.auto) {
+            action.startAutoSlide()
+        }
+
+        action.preparation();
+        next_bt.click(function (e) {
+            e.preventDefault();
+            action.next();
+        });
+
+        prev_bt.click(function (e) {
+            e.preventDefault();
+            action.prev();
+        });
+    }
+}
+$.fn.hoverCaseStudy = function () {
+    var elem = this;
+    button = elem.find('.box_button');
+    bhover = elem.find('.box_hover');
+    TweenMax.set(bhover, {
+        opacity: 0
+    })
+    TweenMax.set(button, {
+        opacity: 0
+    })
+    elem.hover(function () {
+        elem_ = $(this)
+        button = elem_.find('.box_button');
+        bhover = elem_.find('.box_hover');
+        images = elem_.find('.images img.img_big');
+        TweenMax.to(bhover, 0.3, {
+            css: {
+                opacity: 1
+            },
+            ease: Cubic.easeOut
+        })
+
+        TweenMax.to(button, 0.3, {
+            css: {
+                opacity: 1,
+                top: 0
+            },
+            ease: Cubic.easeOut
+        })
+        TweenMax.to(images, 0.3, {
+            css: {
+                scale: 1.1
+            },
+            ease: Cubic.easeOut
+        })
+
+    }, function () {
+        button = elem_.find('.box_button');
+        bhover = elem_.find('.box_hover');
+        images = elem_.find('.images img.img_big ');
+        TweenMax.to(bhover, 0.3, {
+            css: {
+                opacity: 0
+            },
+            ease: Cubic.easeOut
+        })
+
+        TweenMax.to(button, 0.3, {
+            css: {
+                opacity: 0,
+                top: -20
+            },
+            ease: Cubic.easeOut
+        })
+        TweenMax.to(images, 0.3, {
+            css: {
+                scale: 1
+            },
+            ease: Cubic.easeOut
+        })
+
+    })
+}
+$.fn.hoverDetCsImg = function () {
+    var elem = this,
+            top_bt = elem.find('.bt_').css('top');
+    top_bt = parseFloat(top_bt);
+    //    console.log(top_bt);
+    TweenMax.set(elem.find('.box_hover'), {
+        opacity: 0
+    });
+    TweenMax.set(elem.find('.bt_'), {
+        opacity: 0
+    })
+
+    elem.hover(
+            function () {
+                _elem = $(this)
+                TweenMax.to(_elem.find('.img_big'), 0.3, {
+                    css: {
+                        scale: 1.1
+                    }
+                })
+                TweenMax.to(_elem.find('.box_hover'), 0.3, {
+                    css: {
+                        opacity: 1
+                    }
+                })
+                TweenMax.to(_elem.find('.wrap_bt .bt_'), 0.3, {
+                    css: {
+                        opacity: 1,
+                        top: top_bt + 20
+                    }
+                })
+            },
+            function () {
+                _elem = $(this)
+                TweenMax.to(_elem.find('.img_big'), 0.3, {
+                    css: {
+                        scale: 1
+                    }
+                })
+                TweenMax.to(_elem.find('.box_hover'), 0.3, {
+                    css: {
+                        opacity: 0
+                    }
+                })
+                TweenMax.to(_elem.find('.wrap_bt .bt_'), 0.3, {
+                    css: {
+                        opacity: 0,
+                        top: top_bt
+                    }
+                })
+            });
+}
+$.fn.countUpNumber = function (e) {
+    var elem = this,
+            count = {};
+    count.countingRun = function () {
+        elem.each(function (i) {
+            elem_ = $(this);
+            if (e.triggerElem == undefined)
+                e.triggerElem = elem_;
+            if (e.triggerElem.isOnScreen() && !elem_.hasClass('counted')) {
+                elem_.addClass('counted');
+                count.end = parseInt($(this).attr('end_n'))
+                elem_.countTo({
+                    to: count.end,
+                    speed: e.speed * 1000,
+                    class_place: e.class_place,
+                    refreshIntervalL: 50
+                })
+            }
+        })
+    }
+    $(window).scroll(function () {
+        count.countingRun();
+    })
+    count.countingRun();
+}
+$.fn.countTo = function (options) {
+    var defaults = {
+        class_place: "",
+        from: 0, // the number the element should start at
+        to: 100, // the number the element should end at
+        speed: 1000, // how long it should take to count between the target numbers
+        refreshInterval: 100, // how often the element should be updated
+        decimals: 0, // the number of decimal places to show
+        onUpdate: null, // callback method for every time the element is updated,
+        onComplete: null  // callback method for when the element finishes updating
+    }
+    // merge the default plugin settings with the custom options
+    options = $.extend({}, defaults, options || {});
+
+    // how many times to update the value, and how much to increment the value on each update
+    var loops = Math.ceil(options.speed / options.refreshInterval),
+            increment = (options.to - options.from) / loops;
+
+    return $(this).each(function () {
+        var _this = this,
+                loopCount = 0,
+                value = options.from,
+                interval = setInterval(updateTimer, options.refreshInterval);
+
+        function updateTimer() {
+            value += increment;
+            loopCount++;
+            $(_this).find('span' + options.class_place).html(value.toFixed(options.decimals));
+
+            if (typeof (options.onUpdate) == 'function') {
+                options.onUpdate.call(_this, value);
+            }
+
+            if (loopCount >= loops) {
+                clearInterval(interval);
+                value = options.to;
+
+                if (typeof (options.onComplete) == 'function') {
+                    options.onComplete.call(_this, value);
+                }
+            }
+        }
+    });
+};
+$.fn.growChart = function (e) {
+    var elem = this,
+            animatinGrow = function () {
+                elem.each(function () {
+                    elem_ = $(this);
+                    to_height = $(this).attr('to_height');
+                    delay = ($(this).attr('delay') > 0 ? $(this).attr('delay') : 0);
+                    if (e.triggerElem == undefined)
+                        e.triggerElem = elem_;
+                    if (!TweenMax.isTweening(elem_) && e.triggerElem.isOnScreen()) {
+                        TweenMax.to(elem_, e.speed, {
+                            css: {
+                                height: to_height
+                            },
+                            delay: delay,
+                            ease: e.easing
+                        });
+                    }
+                });
+            }
+    animatinGrow();
+    $(window).scroll(function () {
+        animatinGrow();
+    })
+}
+$.fn.fileInput = function () {
+    var elem = this;
+    elem.find('input').change(function () {
+        value = $(this).val();
+        elem.find('span').html(value)
+    });
+}
+$.fn.popupCareer = function () {
+    var elem = this;
+    elem.click(function () {
+        data_popup = $(this).find('.data-popup');
+        id = data_popup.find('.id').html();
+        title = data_popup.find('.title').html();
+        detail = data_popup.find('.detail').html();
+        $("#popup_career").find(".title").html(title);
+        $("#popup_career").find(".detail_req").html(detail);
+        $("#popup_career").find("#id_career").val(id);
+        $("#popup_career").find('.tab_2').css({
+            display: 'none'
+        });
+        $("#popup_career").find('.tab_1').css({
+            display: 'block'
+        });
+        openPopForm("#popup_career");
+    });
+}
+//function
+function animateBannerContent(delay) {
+    var caption_e = $(".banner_home .caption .text .content_animate");
+    var lightning_shadow = $(".banner_home .lighting_shadow");
+    TweenMax.set(caption_e, {
+        'opacity': 0,
+        'top': '-20px'
+    });
+    TweenMax.set(lightning_shadow, {
+        'opacity': 0
+    });
+
+    TweenMax.to($(".banner_home .caption .box"), 1.5, {
+        css: {
+            'opacity': 1
+        },
+        delay: delay
+    });
+
+    delay_caption = delay;
+    caption_e.each(function (i) {
+        delay_caption = parseFloat(delay_caption) + 0.2;
+        TweenMax.to($(this), 0.8, {
+            css: {
+                'opacity': 1,
+                'top': 0
+            },
+            delay: parseFloat(delay_caption),
+            ease: Cubic.linear
+        });
+    })
+    TweenMax.to(lightning_shadow, 2, {
+        css: {
+            'opacity': 1
+        },
+        delay: 1
+    })
+
+}
+
+function fixConnect_section() {
+    if ($("#middle section.connect").length) {
+        //        console.log($(window).height() +"< " +($("#middle section.connect .connect_").height()+265))
+        if ($(window).height() < ($("#middle section.connect .connect_").height() + 265)) {
+            $("#middle section.connect .connect_").css({
+                position: 'relative',
+                top: 0,
+                bottom: 0
+            }, 0)
+            //            console.log('bagong');
+        } else {
+            $("#middle section.connect .connect_").removeAttr('style');
+        }
+
+    }
+//    $(window).scroll(function(){
+//
+//    })
+}
+
+function fixViewPopupForm() {
+    var height_window = $(window).height();
+    var height_scroll = height_window - 99;
+    $(".wrap_popup_form,.wrap_popuprecog").each(function () {
+        //        $(this).css({top:$("header").height()-10})
+        $(this).height(height_scroll);
+        $(this).find('.content').height(height_scroll - 80);
+        if ($(this).find('.inner_content').height() < (height_scroll - 80)) {
+            $(this).find('.content .mCSB_scrollTools').fadeOut();
+        } else {
+            $(this).find('.content .mCSB_scrollTools').fadeIn();
+        }
+
+    })
+}
+function openPopForm($id) {
+    var elem = $($id);
+    $('.popup').css('display', 'none');
+    TweenMax.set(elem, {
+        scale: 0.9,
+        opacity: 0,
+        display: 'block'
+    });
+    TweenMax.to(elem, 0.7, {
+        css: {
+            scale: 1,
+            opacity: 1
+        },
+        ease: Cubic.easeOut
+    })
+}
+
+function closePopForm($id) {
+    var elem = $($id);
+    TweenMax.to(elem, 0.3, {
+        css: {
+            scale: 0.9,
+            opacity: 0
+        },
+        onComplete: function () {
+            $($id).css({
+                display: 'none'
+            })
+        },
+        ease: Cubic.easeInOut
+    })
+}
+function servicesPointHover() {
+    $(".services_middle .box_detail").hover(function () {
+        if (!$(this).hasClass('active')) {
+            polygon = $(this).find('.polygon_icon');
+            plus = $(this).find('.plus_ico');
+            TweenMax.to(polygon, 0.2, {
+                css: {
+                    rotation: '90deg',
+                    scale: 1.2
+                }
+            })
+            TweenMax.to(plus, 0.2, {
+                css: {
+                    rotation: '-90deg'
+                }
+            })
+        }
+    }, function () {
+        if (!$(this).hasClass('active')) {
+            polygon = $(this).find('.polygon_icon');
+            plus = $(this).find('.plus_ico');
+            console.log($(this).css('scale'))
+            TweenMax.to(polygon, 0.2, {
+                css: {
+                    rotation: '0deg',
+                    scale: 1
+                }
+            })
+            TweenMax.to(plus, 0.2, {
+                css: {
+                    rotation: '0deg'
+                }
+            })
+        }
+    })
+}
+function servicesPointAction() {
+    $(".services_middle .box_detail").click(function () {
+        close_pointServices = function () {
+            $(".services_middle .box_detail.active");
+            TweenMax.to($(".services_middle .box_detail.active .polygon_icon"), 0.2, {
+                css: {
+                    rotation: '0deg',
+                    scale: 1
+                }
+            });
+            TweenMax.to($(".services_middle .box_detail.active .plus_ico"), 0.2, {
+                css: {
+                    rotation: '0deg'
+                }
+            });
+            $(".services_middle .box_detail.active ul").fadeOut(300)
+            $(".services_middle .box_detail").removeClass('active');
+        }
+        if (!$(this).hasClass('active')) {
+
+            close_pointServices();
+            polygon = $(this).find('.polygon_icon');
+            plus = $(this).find('.plus_ico');
+            $(this).addClass('active');
+            TweenMax.to(polygon, 0.2, {
+                css: {
+                    rotation: '90deg',
+                    scale: 1.2
+                }
+            });
+            TweenMax.to(plus, 0.2, {
+                css: {
+                    rotation: '-45deg'
+                }
+            });
+            $(this).find("ul").fadeIn(300);
+        } else {
+            close_pointServices();
+
+        }
+
+
+    });
+}
+function caseStudyDrop() {
+    elem = $(".casestudies_list .menu_category .have_drop");
+    elem.click(function (e) {
+        e.preventDefault();
+        target = $($(this).attr('target_dropdown'));
+        if (target.is(':visible')) {
+            target.slideUp(300);
+        } else {
+            target.slideDown(300);
+        }
+    })
+}
+
+function tabPopupCareer() {
+    $("#popup_career .apply").click(function () {
+        $("#popup_career .tab_1").slideUp(500);
+        $("#popup_career .tab_2").slideDown(500);
+        TweenMax.to($("#popup_career .mCSB_container"), 1, {
+            css: {
+                top: 0
+            },
+            ease: Cubic.easeInOut
+        });
+    });
+
+    $("#popup_career .back").click(function () {
+        $("#popup_career .tab_2").slideUp(500);
+        $("#popup_career .tab_1").slideDown(500);
+        TweenMax.to($("#popup_career .mCSB_container"), 1, {
+            css: {
+                top: 0
+            },
+            ease: Cubic.easeInOut
+        });
+
+    });
+}
+function tabContact() {
+    $("#middle.contact .nav").click(function () {
+        var elem = $(this);
+        target = $(this).attr('target');
+        if (!$(target).is(":visible")) {
+            $("#middle.contact .nav").removeClass('active');
+            $(this).addClass('active');
+            $(".contact-new .box-form > div").slideUp(500);
+            $(target).slideDown(500);
+            $("html,body").animate({scrollTop: $(".box-form").offset().top - 200}, 400);
+            setTimeout(function () {
+                $(target).find('.row:eq(0)').find('input').focusin().focus();
+            }, 500);
+        }
+    });
+    $("#middle.contact .nav").each(function () {
+        if ($(this).hasClass('active')) {
+            var elem = $(this);
+            target = $(this).attr('target');
+            $(target).slideDown(500);
+        }
+    })
+}
+function fixViewList() {
+    window_width = $(window).width();
+
+    if (window_width >= 1900) {
+        $(".wrap_list .box_blog").each(function (i) {
+            i++;
+            if ($(this).hasClass('last'))
+                $(this).removeClass('last');
+            if (i % 5 == 0)
+                $(this).addClass('last');
+            console.log(i);
+        });
+        $(".wrap_list .box_casestudy ").each(function (i) {
+            i++;
+            $(this).removeClass('last');
+            if (i % 3 == 0)
+                $(this).addClass('last');
+        });
+
+    }
+    if (window_width >= 1300 && window_width < 1900) {
+        $(".wrap_list .box_blog").each(function (i) {
+            i++;
+            $(this).removeClass('last');
+            if (i % 4 == 0)
+                $(this).addClass('last');
+        });
+        $(".wrap_list .box_casestudy ").each(function (i) {
+            i++;
+            $(this).removeClass('last');
+            if (i % 3 == 0)
+                $(this).addClass('last');
+        });
+
+    }
+    if (window_width >= 768 && window_width < 1300) {
+        $(".wrap_list .box_casestudy ").each(function (i) {
+            i++;
+            $(this).removeClass('last');
+            if (i % 2 == 0)
+                $(this).addClass('last');
+        });
+        $(".wrap_list .box_blog").each(function (i) {
+            i++;
+            $(this).removeClass('last');
+            if (i % 2 == 0)
+                $(this).addClass('last');
+        });
+        $(".career_list .box_career").each(function (i) {
+            i++;
+            $(this).removeClass('last');
+            if (i % 2 == 0)
+                $(this).addClass('last');
+        });
+    }
+
+}
+
+function mobileMenu() {
+    var menu = $("header .menu"),
+            body = $("header,#middle,.banner_home,.banner_std,footer,.popup");
+
+    $(".toggleMenu").click(function (e) {
+        e.preventDefault();
+        if ($(window).width() < 768)
+            body = $("header,#middle,footer,.popup");
+
+        if ($(window).width() < 1300) {
+            if (!$(this).hasClass('active')) {
+                TweenMax.to(menu, 0.3, {
+                    css: {
+                        right: 0
+                    },
+                    ease: Cubic.easeOut
+                });
+                TweenMax.to(body, 0.3, {
+                    css: {
+                        left: -menu.width()
+                    },
+                    ease: Cubic.easeOut
+                });
+                $(this).addClass('active');
+            } else {
+                TweenMax.to(menu, 0.3, {
+                    css: {
+                        right: -menu.width()
+                    },
+                    ease: Cubic.easeOut
+                });
+                TweenMax.to(body, 0.3, {
+                    css: {
+                        left: 0
+                    },
+                    ease: Cubic.easeOut
+                });
+                $(this).removeClass('active');
+
+            }
+        }
+    });
+    $(window).resize(function () {
+        TweenMax.to(menu, 0.3, {
+            css: {
+                right: -menu.width()
+            },
+            ease: Cubic.easeOut
+        });
+        TweenMax.to(body, 0.3, {
+            css: {
+                left: 0
+            },
+            ease: Cubic.easeOut
+        });
+        $(this).removeClass('active');
+    })
+
+}
+function recognitionListFix() {
+    var fix = function (e) {
+        $(".box_recog ").parents('div').find('hr').each(function () {
+            $(this).remove()
+        });
+        $(".box_recog").each(function (i) {
+            i++;
+            $(this).removeClass('last');
+            if (i % e.paramNum == 0) {
+                $(this).addClass('last');
+                $(this).after("<hr/>");
+            }
+        });
+
+    }
+    window_width = $(window).width();
+    if (window_width > 1300)
+        fix({
+            paramNum: 3
+        })
+    else if (window_width < 1300 && window_width >= 768)
+        fix({
+            paramNum: 2
+        })
+    else if (window_width < 768 && window_width >= 0)
+        fix({
+            paramNum: 1
+        })
+
+}
+function backTopBT() {
+    var scrollTop = $(window).scrollTop();
+    if (scrollTop > 100) {
+        if (!$(".backtopBt").is(":visible") && $(window).width() >= 768)
+            $(".backtopBt").fadeIn(300);
+    } else
+        $(".backtopBt").fadeOut(300);
+}
+function backtop() {
+    TweenMax.to($(window), 1, {
+        scrollTo: {
+            y: 0,
+            autoKill: true
+        },
+        ease: Cubic.easeInOut,
+        overwrite: 5
+    });
+
+}
+function box_recogHover() {
+    $(".box_recog").hover(function () {
+        elem = $(this);
+        images = elem.find('.images img');
+        text = elem.find('.text p');
+        TweenMax.to(text, 0.3, {
+            css: {
+                color: '#FFF',
+                marginTop: '-10px'
+            }
+        })
+        TweenMax.to(images, 0.3, {
+            css: {
+                scale: 1.1
+            }
+        })
+    }, function () {
+        elem = $(this);
+        images = elem.find('.images img');
+        text = elem.find('.text p');
+        TweenMax.to(text, 0.3, {
+            css: {
+                color: '#80bae5',
+                marginTop: '0px'
+            }
+        })
+        TweenMax.to(images, 0.3, {
+            css: {
+                scale: 1
+            }
+        })
+
+    })
+}
+function scrollIaction() {
+    TweenMax.to($(window), 1, {
+        scrollTo: {
+            y: $(window).height() - ($("header").height() - 9),
+            autoKill: true
+        },
+        ease: Cubic.easeInOut,
+        overwrite: 5
+    });
+
+}
+function popupRecog() {
+    $('.box_recog').click(function () {
+        var data_images = $(this).find('.data-popup div[data=images]').html();
+        var data_text = $(this).find('.data-popup div[data=text]').html();
+        $("#popup_recog .text .vcenter").html(data_text);
+        if ($("#popup_recog .right img.set_image").length)
+            $("#popup_recog .right img.set_image").attr('src', data_images);
+        else {
+            $("#popup_recog .right").append('<img src="' + data_images + '" class="set_image"/>')
+        }
+        $("#popup_recog").fadeIn(300);
+        TweenMax.set($("#popup_recog .wrap_content"), {
+            opacity: 0,
+            scale: 0.8
+        });
+        TweenMax.to($("#popup_recog .wrap_content"), 0.4, {
+            css: {
+                opacity: 1,
+                scale: 1
+            },
+            delay: 0.2,
+            ease: Cubic.easeOut
+        });
+    });
+    $("#popup_recog .wrap_content .close_pop").click(function () {
+        TweenMax.to($("#popup_recog .wrap_content"), 0.4, {
+            css: {
+                opacity: 0,
+                scale: 0.8
+            },
+            ease: Cubic.easeIn
+        });
+        $("#popup_recog").delay(300).fadeOut(300);
+
+
+    })
+    $("#popup_recog").click(function (e) {
+        if ($(e.target).hasClass('mCSB_container')) {
+            TweenMax.to($("#popup_recog .wrap_content"), 0.4, {
+                css: {
+                    opacity: 0,
+                    scale: 0.8
+                },
+                ease: Cubic.easeIn
+            });
+            $("#popup_recog").delay(300).fadeOut(300);
+        }
+    });
+
+}
+function navtabAnimate() {
+    var elem = $(".wrap_navtab"),
+            animateRotate = function (s) {
+                TweenMax.to(elem.find('.spar_3'), 0.3, {
+                    css: {
+                        rotation: s.rotate
+                    }
+                })
+            }
+    $(".wrap_navtab .nav").hover(function () {
+        if ($(this).is(":last-child"))
+            rotate = '45deg';
+        else
+            rotate = '-45deg'
+
+        animateRotate({
+            rotate: rotate
+        });
+        if (!$(this).hasClass('active')) {
+            TweenMax.to($(this).find('h3'), 0.3, {
+                css: {
+                    margin: 0
+                },
+                ease: Cubic.easeOut
+
+            })
+            TweenMax.to($(this).find('h6'), 0.3, {
+                css: {
+                    margin: 0,
+                    opacity: 1
+                },
+                ease: Cubic.easeOut
+
+            })
+
+        }
+    }, function () {
+        if ($(this).is(":last-child"))
+            rotate = '-45deg';
+        else
+            rotate = '45deg'
+
+        if ($(this).is(":last-child") && $(this).hasClass('active'))
+            rotate = '45deg';
+        else if ($(this).is(":first-child") && $(this).hasClass('active'))
+            rotate = '-45deg'
+
+        animateRotate({
+            rotate: rotate
+        });
+        if (!$(this).hasClass('active')) {
+            TweenMax.to($(this).find('h3'), 0.3, {
+                css: {
+                    marginTop: '5px'
+                },
+                ease: Cubic.easeOut
+            })
+            TweenMax.to($(this).find('h6'), 0.3, {
+                css: {
+                    marginTop: '-5px',
+                    opacity: 0
+                },
+                ease: Cubic.easeOut
+            })
+
+        }
+    })
+
+    $(".wrap_navtab .nav").click(function () {
+        $(".wrap_navtab .nav").each(function () {
+            if (!$(this).hasClass('active')) {
+                TweenMax.to($(this).find('h3'), 0.3, {
+                    css: {
+                        marginTop: '15px'
+                    },
+                    ease: Cubic.easeOut
+                })
+                TweenMax.to($(this).find('h6'), 0.3, {
+                    css: {
+                        marginTop: '-10px',
+                        opacity: 0
+                    },
+                    ease: Cubic.easeOut
+                })
+            }
+
+        })
+        if ($(this).is(":last-child"))
+            rotate = '45deg';
+        else
+            rotate = '-45deg'
+        animateRotate({
+            rotate: rotate
+        });
+    });
+    //Append by  Daniel
+    $(window).load(function () {
+        $(".wrap_navtab .nav.active").trigger('click');
+    })
+}
+$.fn.static_ajaxLoad = function (e) {
+    var elem = this,
+            url = elem.attr('from_url');
+    t = {
+        beforeSend: function () {
+        },
+        onComplete: function () {
+        }
+    };
+    var s = $.extend(true, t, e);
+    if (elem.length) {
+
+        $.ajax({
+            url: url,
+            beforeSend: function () {
+                elem.css({
+                    'position': 'relative',
+                    'min-height': '300px'
+                })
+                elem.append("<div class='loader_ajax'></div>")
+                s.beforeSend();
+            },
+            complete: function () {
+                elem.find('.loader_ajax').remove();
+                elem.removeAttr('style');
+            },
+            success: function (html) {
+                elem.append(html);
+                s.onComplete();
+            }
+        });
+    }
+}
+$.fn.infinite_ajaxLoad = function (e) {
+    var elem_ = $(this),
+            ajax_state = false,
+            t = {
+                url: elem_.attr('from_url'),
+                paramname_index: elem_.attr('paramname_index'),
+                page_index: elem_.attr('page_index'),
+                beforeSend: function () {
+                },
+                onComplete: function () {
+                }
+            };
+    var s = $.extend(true, t, e);
+    if (elem_.length) {
+        $(window).scroll(function () {
+            trigger = elem_.height() - $(this).scrollTop();
+            if (trigger <= 0 && !ajax_state && !elem_.hasClass('finish_load')) {
+                s.page_index++;
+                $.ajax({
+                    url: s.url,
+                    data: s.paramname_index + "=" + s.page_index,
+                    beforeSend: function () {
+                        s.beforeSend();
+                        ajax_state = true;
+                    },
+                    complete: function () {
+                        ajax_state = false;
+                    },
+                    success: function (html) {
+                        elem_.attr({
+                            'page_index': s.page_index
+                        })
+                        html_ = String(html);
+                        html_ = html_.trim();
+                        if (html_ != "") {
+                            elem_.append(html);
+                        } else
+                            elem_.addClass('finish_load');
+
+                        s.onComplete();
+
+                    }
+                });
+            }
+
+        })
+
+    }
+}
+function fixThanksWrapper() {
+    height_w = $(window).height();
+    $(".thanks_page").css({
+        minHeight: height_w - 200
+    })
+}
+function fixcsHomeSlider() {
+    var w_width = $(window).width();
+    if (w_width < 480) {
+        $("section.case_studies ul.slide_cs,section.case_studies ul.slide_cs li.active").css({
+            height: '350px'
+        })
+    } else {
+        $("section.case_studies ul.slide_cs,section.case_studies ul.slide_cs li.active").css({
+            height: '620px'
+        })
+    }
+}
+function box_dp_animate() {
+    if ($(".box_dp").isOnScreen()) {
+        TweenMax.to($(".box_dp"), 0.5, {
+            css: {
+                borderColor: "#4d7da1"
+            },
+            delay: 1.6
+        })
+    }
+
+}
+function hoverShare() {
+    if ($(window).width() >= 1024)
+        $("section.share a.share_ico").hover(
+                function () {
+                    img = $(this).find('img');
+                    if ($(window).width() >= 1024)
+                        TweenMax.set(img, {
+                            bottom: '-100%'
+                        });
+
+
+                },
+                function () {
+                    img = $(this).find('img');
+                    if ($(window).width() >= 1024)
+                        TweenMax.set(img, {
+                            bottom: '0%'
+                        });
+                });
+
+    $("section.share a.direction._left").hover(
+            function () {
+                img = $(this).find('img');
+                if ($(window).width() >= 1024)
+                    TweenMax.set(img, {
+                        right: '0%'
+                    });
+
+            },
+            function () {
+                img = $(this).find('img');
+                if ($(window).width() >= 1024)
+                    TweenMax.set(img, {
+                        right: '-100%'
+                    });
+            });
+
+    $("section.share a.direction._right").hover(
+            function () {
+                img = $(this).find('img');
+                if ($(window).width() >= 1024)
+                    TweenMax.set(img, {
+                        right: '-100%'
+                    });
+            },
+            function () {
+                img = $(this).find('img');
+                if ($(window).width() >= 1024)
+                    TweenMax.set(img, {
+                        right: '0%'
+                    });
+            });
+
+}
+function aboutBanner(s) {
+    var
+            elem = $(".wrap_banner.about video"),
+            w_banner = $(".wrap_banner.about"),
+            c_banner = w_banner.find('.banner_std'),
+            act = {};
+
+    act.resize = function () {
+        elem = $(".wrap_banner.about video");
+
+        if ($(window).width() > 768) {
+            if (!elem.length) {
+                c_banner.html('<video loop poster="' + s.poster + '" autoplay muted> <source src="' + s.video + '" type="video/mp4"> Your browser does not support the video tag.</video>');
+            }
+            if (elem.is(":hidden")) {
+                elem.css('display', 'block');
+            }
+            if ($(".wrap_banner.about video")[0].paused)
+                $(".wrap_banner.about video")[0].play();
+            w_banner.height(elem.height());
+            c_banner.height(elem.height());
+        } else {
+            if (elem.length) {
+                elem.css('display', 'none');
+            }
+            w_banner.height(440);
+            c_banner.height(440);
+            c_banner.css('background', "url(" + s.image + ") right");
+        }
+    };
+
+    act.resize();
+    $(window).load(function () {
+        if ($(window).width() > 768)
+            setTimeout(function () {
+                elem[0].play();
+            }, 500);
+
+        act.resize();
+    });
+    $(window).resize(function () {
+        act.resize();
+    });
+}
+//function static_ajaxLoad(){
+//    $(".ajax_load").each(function(){   
+//        elem_=$(this);
+//        url = $(this).attr('from_url');
+//        $.ajax({
+//            url:url,
+//            beforeSend:function(){
+//                elem_.css({
+//                    'position':'relative',
+//                    'min-height':'300px'
+//                })
+//                elem_.append("<div class='loader_ajax'></div>")
+//            },
+//            complete:function(){
+//                elem_.find('.loader_ajax').remove();
+//            },
+//            success:function(html){
+//                elem_.append(html);
+//            }
+//        });
+//    })
+//
+//}
+
+
+function connectFormFocus() {
+    var
+            elem = $(".contact-new .box-form"),
+            row = elem.find('.row'),
+            label, hbg, input;
+    row.prepend("<div class='hover-bg'></div>");
+
+    var act = function (input, label, hbg, mode) {
+        if (mode == 'in') {
+            input.parent('.row').addClass('focus');
+            TweenLite.set(input, {opacity: 1});
+            TweenLite.to(hbg, 0.5, {opacity: 1, ease: Linear.easeOut});
+            TweenLite.set(label, {
+                fontSize: '12px',
+                top: '23px',
+//                color: '#665855',
+                fontWeight: '700',
+                delay: .1
+            });
+        } else {
+            input.parent('.row').removeClass('focus');
+            if (input.val() === "" || input.val() === undefined) {
+                TweenLite.set(input, {opacity: 0});
+                TweenLite.set(label, {
+                    fontSize: '16px',
+                    top: '35px',
+//                    color: '#666',
+                    fontWeight: '400',
+                    delay: .1
+                });
+            }
+
+            TweenLite.to(hbg, 0.3, {opacity: 0, ease: Linear.easeOut});
+        }
+    };
+    elem.find('input[type=text],input[type=email],textarea,select').focusin(function () {
+        input = $(this),
+                label = input.parent('.row').find('label'),
+                hbg = input.parent('.row').find('.hover-bg');
+        act(input, label, hbg, 'in');
+    });
+    elem.find('input[type=text],input[type=email],textarea,select').focusout(function () {
+        input = $(this),
+                label = input.parent('.row').find('label'),
+                hbg = input.parent('.row').find('.hover-bg');
+        act(input, label, hbg, 'out');
+    });
+    elem.find('input[type=text],input[type=email],textarea').focusout(function () {
+        input = $(this),
+                label = input.parents('.row').find('label'),
+                hbg = input.parents('.row').find('.hover-bg');
+        act(input, label, hbg, 'out');
+    });
+    elem.find('input[type=text],input[type=email],textarea').change(function () {
+        input = $(this),
+                label = input.parents('.row').find('label'),
+                hbg = input.parents('.row').find('.hover-bg');
+        act(input, label, hbg, 'out');
+    });
+}
+
+function hoverButton() {
+    var text_btn = $(".btn").text();
+    $(".btn").each(function () {
+        text_btn = $(this).text();
+        $(this).text("");
+        $(this).append("<span class='hover'></span><span style='position:relative'>" + text_btn + "</span>");
+    });
+    $(".btn").hover(function () {
+        var hover = $(this).find('.hover');
+        TweenLite.to(hover, 0.3, {
+            width: '100%',
+            skewX: '0',
+            ease: Cubic.easeOut
+        });
+    }, function () {
+        var hover = $(this).find('.hover');
+        TweenLite.to(hover, 0.3, {
+            width: '0',
+            skewX: '30deg',
+            ease: Cubic.easeOut
+        });
+    });
+}
+function slider_liw() {
+    $(".li-testi .left .slider").slick({
+        asNavFor: '.right .slider',
+//        fade:true,
+
+    });
+    $(".li-testi .right .slider").slick({
+        asNavFor: '.left .slider',
+
+    });
+}
+
+
+
+function parallax(t) {
+    var elem = $(t);
+
+    this.init = function () {
+        var topoffset;
+        elem.each(function () {
+            topoffset = ($(this).offset().top - $(window).height()) / $(this).attr('offset-amount') - 0.5;
+//            console.log($(this).css('position'))
+            topoffset < 0 ? topoffset = 0 : '';
+            $(this).attr('offset-top', $(this).offset().top);
+            topoffset = (parseFloat($(this).attr('offset-top')) - $(window).scrollTop()) / parseFloat($(this).attr('offset-amount'));
+
+            if ($(this).css('position') === 'static')
+                $(this).css({
+                    position: 'relative',
+                });
+
+            TweenLite.to($(this), 0.8, {top: topoffset, delay: 2, ease: Power4.easeOut});
+
+        });
+    };
+
+    $(window).load(function () {
+        init();
+    });
+
+    this.anim = function (top) {
+        var topoffset;
+        elem.each(function () {
+            topoffset = (parseFloat($(this).attr('offset-top')) - top) / parseFloat($(this).attr('offset-amount'));
+            TweenLite.to($(this), 0.9, {top: topoffset, overwrite: 5, ease: Power2.easeOut});
+
+//            $(this).css({
+//                top: topoffset
+//            });
+        });
+    };
+
+    return this;
+}
+
+function textAnimate(e, type) {
+    var act = {};
+    act.set = function (e) {
+        var spliText = new SplitText(e,{type:type});
+    }
+}

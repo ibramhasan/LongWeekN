@@ -1,0 +1,111 @@
+/*=============================================================================================	
+    Company    : PT Web Architect Technology - webarq.com
+    Document   : MediaQuery 1366
+    Author     : Rizki Nida Chaerulsyah - akuiki.net
+==============================================================================================*/
+
+
+
+/* structure
+----------------------------------------------------------------------------------------------*/
+
+.content{width: 1300px}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-weight: normal;
+}
+
+/* header
+----------------------------------------------------------------------------------------------*/
+header .menu {margin-left:80px;}
+header .btn_header {margin-left: 75px;}
+
+/* middle
+----------------------------------------------------------------------------------------------*/
+#middle .wrap_banner.home .banner_home .line.line_kiri_bawah {width: 252px;bottom: -20px;left: 40px;}
+#middle .wrap_banner.home .banner_home .line.line_kiri_bawah img{width:252px;height: auto}
+
+#middle .wrap_banner.home .banner_home .line.line_kiri {height: 280px;top: 230px;}
+#middle .wrap_banner.home .banner_home .line.line_kiri img{height: 280px;width: auto}
+
+#middle .wrap_banner.home .banner_home .line.line_atas {width: 430px;}
+#middle .wrap_banner.home .banner_home .line.line_atas img{width: 430px;height: auto}
+
+#middle .wrap_banner.home .banner_home .line.line_atas_kanan {height: 54px;right: 550px}
+#middle .wrap_banner.home .banner_home .line.line_atas_kanan img{height: 54px;width: auto}
+
+#middle .wrap_banner.home .banner_home .line.line_kanan {height: 279px;}
+#middle .wrap_banner.home .banner_home .line.line_kanan img{height: 279px;width: auto}
+
+#middle .wrap_banner.home .banner_home .line.line_bawah {width: 996px;}
+#middle .wrap_banner.home .banner_home .line.line_bawah img{width: 996px;height: auto}
+
+#middle section.our_client .box_client .text h5{
+    font-size: 20px;
+}
+
+#middle section.connect .box_connect .desc p.style2 {margin-bottom: 69px;}
+#middle section.connect p.pfoot {margin: 80px auto 0 auto;}
+
+#middle section.services .box_services {width: 260px}
+#middle section.services .box_services h6{width: 175px}
+#middle section.services .box_services h1 {width: 200px;}
+
+#middle section.connect .box_connect{
+    width:400px;
+    margin:0 43px 0 0 ;
+}
+#middle section.connect .box_connect.last{margin-right: 0;}
+#middle section.connect .box_connect p{letter-spacing: 0}
+
+#middle section.wwa .left .text {width: 540px;}
+#middle section.wt .right {width: 640px;}
+#middle section.wt .right {width: 640px;}
+#middle section.wt .right .box_images {margin-left: 45px;}
+#middle section.wt .left {
+    float: left;
+    width: 530px;
+    margin:110px 0 0 70px;
+}
+#middle section.wt .left p,
+#middle section.wt .left h2{text-align: right}
+
+#middle section.services_top .left {margin-left: 160px;}
+#middle section.services_top .right {margin-right: 160px;}
+
+#middle section.casestudies_list .wrap_list .box_casestudy {width: 420px;height: 320px;margin: 0px 20px 50px 0px}
+#middle section.casestudies_list .wrap_list .box_casestudy .images {width: 420px;height: 260px}
+#middle section.casestudies_list .wrap_list .box_casestudy .images img{max-width: 100%;}
+#middle section.casestudies_list .wrap_list .box_casestudy h6 {margin: 20px 0px 10px}
+
+#middle section.share .content {width: 100%;min-width: 1300px;}
+
+#middle section.dp .content {width: 1300px}
+#middle section.dp .content .box_dp {width: 215px;}
+#middle section.dp .content .box_dp .images img {top: 10px;width: 75%}
+#middle section.dp .content .box_dp h6{top: 160px}
+
+#middle section.casestudies_list.blog_list .wrap_list {padding: 0 0 0 30px;}
+
+#middle section.blog_list.blog_detail .wrap_list {
+    position: relative;
+    overflow: hidden;
+    height: 450px
+}
+#middle section.career_list .box_career {
+    width: 420px;
+    height: 340px;
+    margin:0 20px 40px 0;
+}
+#middle section.career_list .box_career h5{margin: 50px 0 45px 0}
+#middle section.career_list .box_career h6{margin: 0 0 50px 0}
+#middle section.career_list .box_career .whiteBorderButton {
+    width: 150px;
+    height: 38px;
+    font-size: 10px;
+    line-height: 40px;
+}

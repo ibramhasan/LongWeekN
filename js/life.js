@@ -59,6 +59,7 @@ $(document).ready(function(){
 				$("#pict3").animate({widht:"350px",height:"350px"},"slow")
 			});
 		});
+
 // blog
 $(document).ready(function(){
 	$("#klik").click(function(){
@@ -95,3 +96,8 @@ $(document).ready(function(){
         $("#p1").slideUp(9000).slideDown(5000);
       });
     });
+$(document).ready(function(){
+	$("#p2").mouseenter(function(){
+		$("#p2").slideDown(8000.slideUp(5000);
+	});
+});
