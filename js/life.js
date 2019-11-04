@@ -1,7 +1,5 @@
 // JQ ADit
-$(document).ready(function(){
 
-});
 
 
 
@@ -107,6 +105,6 @@ $(document).ready(function(){
     });
 $(document).ready(function(){
 	$("#p2").mouseenter(function(){
-		$("#p2").slideDown(8000.slideUp(5000);
+		$("#p2").slideDown(8000).slideUp(5000);
 	});
 });
