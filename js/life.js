@@ -65,6 +65,28 @@ $(document).ready(function(){
 		$(".carousel-inner").slideToggle("slow");
 	});
 });
+// KARIR
+$(document).ready(function(){
+	$("#carir1").click(function(){
+		$(".img-fluid-1").animate({height:"200px",width:"200px"},"slow");
+	});
+	$("#carir2").click(function(){
+		$(".img-fluid-2").animate({height:"200px",width:"200px"},"slow");
+	});
+	$("#carir3").click(function(){
+		$(".img-fluid-3").animate({height:"200px",width:"200px"},"slow");
+	});
+	$("#carir4").click(function(){
+		$(".img-fluid-4").animate({height:"200px",width:"200px"},"slow");
+	});
+	$("#carir5").click(function(){
+		$(".img-fluid-5").animate({height:"200px",width:"200px"},"slow");
+	});
+	$("#carir6").click(function(){
+		$(".img-fluid-6").animate({height:"200px",width:"200px"},"slow");
+	});
+});
+
 
 
 // JQ TAUFIK
