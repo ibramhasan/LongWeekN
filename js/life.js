@@ -90,9 +90,8 @@ $(document).ready(function(){
 
 
 // JQ TAUFIK
-$(document).ready(function(){
-
-});
-
-
-
+    $(document).ready(function(){
+      $("#p1").mouseenter(function(){
+        $("#p1").slideUp(9000).slideDown(5000);
+      });
+    });
