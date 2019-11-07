@@ -19,6 +19,22 @@ $(document).ready(function(){
 		});
 	});
 	// button
+	$(document).ready(function(){
+		$("#tor").mouseenter(function(){
+			$("#tor").animate({opacity:'0.4'},"slow");
+				$("#tor").mouseleave(function(){
+					$("#tor").animate({opacity:"1.0"},"slow");
+				});
+			});
+		});
+		$(document).ready(function(){
+			$("#tes").mouseenter(function(){
+				$("#tes").animate({opacity:'0.4'},"slow");
+					$("#tes").mouseleave(function(){
+						$("#tes").animate({opacity:"1.0"},"slow");
+					});
+				});
+			});
 
 	$("#text").mouseenter(function(){
 		$("#text").animate({fontSize:"2rem"},"slow");
@@ -38,6 +54,14 @@ $(document).ready(function(){
 		$("#teks3").slideUp("slow").slideDown("slow");
 	});
 	// foto 1
+	$(document).ready(function(){
+  $("#hp").click(function(){
+    $("#gurih").slideDown(5000);
+  });
+  $("#stop").click(function(){
+    $("#gurih").stop();
+  });
+});
 
 	$("#pict1").mouseenter(function(){
 		$("#pict1").animate({widht:"360px", height:"360px"},"slow");
@@ -99,8 +123,8 @@ $(document).ready(function(){
 
 // JQ TAUFIK
     $(document).ready(function(){
-      $("#p1").mouseenter(function(){
-        $("#p1").slideUp(9000).slideDown(5000);
+      $("#toggle").mouseenter(function(){
+        $("#toggle").slideUp(9000).slideDown(5000);
       });
     });
 $(document).ready(function(){
